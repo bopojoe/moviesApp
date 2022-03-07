@@ -43,10 +43,10 @@ export default function FilterMoviesCard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChange = (e, type, value) => {
-    e.preventDefault();
-    // Completed later
-  };
+   const handleChange = (e, type, value) => {
+     e.preventDefault();
+     props.onUserInput(type, value); // NEW
+   };
 
   const handleTextChange = (e) => {
     handleChange(e, "title", e.target.value);

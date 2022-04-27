@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#bfbfbf",
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MovieListPageTemplate({ movies, title, selectFavourite }) {
+function MovieListPageTemplate({ movies, title, action }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -21,10 +22,7 @@ function MovieListPageTemplate({ movies, title, selectFavourite }) {
           <Header title={title} />
         </Grid>
         <Grid item container spacing={5}>
-          <MovieList
-            selectFavourite={selectFavourite}
-            movies={movies}
-          ></MovieList>
+          <MovieList action={action} movies={movies} />
         </Grid>
       </Grid>
     </div>

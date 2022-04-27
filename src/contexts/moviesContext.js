@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [myPlaylists, setMyPlaylists] = useState({}); 
+  const [myPlaylists, setMyPlaylists] = useState([]);
   const [myReviews, setMyReviews] = useState({});
   const [favourites, setFavourites] = useState([]);
 
@@ -24,8 +24,13 @@ const MoviesContextProvider = (props) => {
     setMyReviews({ ...myReviews, [movie.id]: review });
   };
 
-  const addToPlaylist = (movie, playlist) => {
-    setMyPlaylists({ ...myPlaylists, [movie.id]: playlist });
+  const addToPlaylist = (movie) => {
+     let updatedPlaylists = [...myPlaylists];
+     if (!myPlaylists.includes(movie.id)) {
+       updatedPlaylists.push(movie.id);
+     }
+     console.log(updatedPlaylists);
+     setMyPlaylists(updatedPlaylists);
   };
 
   return (

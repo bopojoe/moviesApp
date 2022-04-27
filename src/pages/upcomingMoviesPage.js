@@ -23,6 +23,7 @@ const genreFiltering = {
 
 const UpcomingMoviesPage = (props) => {
   const [movies, setMovies] = useState([]);
+  const [mustWatch, setMustWatch] = useState([]);
 
   const { data, error, isLoading, isError } = useQuery(
     "load upcoming",

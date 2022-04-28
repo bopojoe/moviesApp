@@ -1,0 +1,120 @@
+export default {
+  adult: false,
+  backdrop_path: "/5nubzpKcNjV7zDwHkAV0J7yAJlH.jpg",
+  created_by: [
+    {
+      id: 2326045,
+      credit_id: "60dc59172d372100464b6c81",
+      name: "Lisa Ambjörn",
+      gender: 0,
+      profile_path: null,
+    },
+  ],
+  episode_run_time: [45],
+  first_air_date: "2021-07-01",
+  genres: [
+    {
+      id: 18,
+      name: "Drama",
+    },
+  ],
+  homepage: "https://www.netflix.com/title/81210762",
+  id: 125910,
+  in_production: true,
+  languages: ["en", "es", "sv", "it"],
+  last_air_date: "2021-07-01",
+  last_episode_to_air: {
+    air_date: "2021-07-01",
+    episode_number: 6,
+    id: 2970508,
+    name: "",
+    overview:
+      "Wilhelm feels conflicted about how to handle the aftermath of the leaked video while Simon fends off the press. Felice makes a discovery.",
+    production_code: "",
+    runtime: 45,
+    season_number: 1,
+    still_path: "/2JqU37vNsr9BHHD8nCUiROO1Ixu.jpg",
+    vote_average: 8.9,
+    vote_count: 7,
+  },
+  name: "Young Royals",
+  next_episode_to_air: null,
+  networks: [
+    {
+      name: "Netflix",
+      id: 213,
+      logo_path: "/wwemzKWzjKYJFfCeiB57q3r4Bcm.png",
+      origin_country: "",
+    },
+  ],
+  number_of_episodes: 6,
+  number_of_seasons: 2,
+  origin_country: ["SE"],
+  original_language: "sv",
+  original_name: "Young Royals",
+  overview:
+    "Prince Wilhelm adjusts to life at his prestigious new boarding school, Hillerska, but following his heart proves more challenging than anticipated.",
+  popularity: 90.238,
+  poster_path: "/6CHznbr0BF78ar16zJwTVRYLLOX.jpg",
+  production_companies: [
+    {
+      id: 154516,
+      logo_path: null,
+      name: "Nexiko AB",
+      origin_country: "",
+    },
+  ],
+  production_countries: [
+    {
+      iso_3166_1: "SE",
+      name: "Sweden",
+    },
+  ],
+  seasons: [
+    {
+      air_date: "2021-07-01",
+      episode_count: 6,
+      id: 195918,
+      name: "Season 1",
+      overview: "",
+      poster_path: "/6CHznbr0BF78ar16zJwTVRYLLOX.jpg",
+      season_number: 1,
+    },
+    {
+      air_date: null,
+      episode_count: 0,
+      id: 212302,
+      name: "Season 2",
+      overview: "",
+      poster_path: null,
+      season_number: 2,
+    },
+  ],
+  spoken_languages: [
+    {
+      english_name: "English",
+      iso_639_1: "en",
+      name: "English",
+    },
+    {
+      english_name: "Spanish",
+      iso_639_1: "es",
+      name: "Español",
+    },
+    {
+      english_name: "Swedish",
+      iso_639_1: "sv",
+      name: "svenska",
+    },
+    {
+      english_name: "Italian",
+      iso_639_1: "it",
+      name: "Italiano",
+    },
+  ],
+  status: "Returning Series",
+  tagline: "",
+  type: "Scripted",
+  vote_average: 8.9,
+  vote_count: 601,
+};

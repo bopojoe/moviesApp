@@ -13,6 +13,28 @@ export const getMovies = () => {
     });
 };
 
+//https://api.themoviedb.org/3/movie/414906/credits?api_key=c408e5a5fe276a6c75cbe4020fd6676d
+
+export const getMovieCredits = (args) => {
+  console.log(args.queryKey);
+   const [, idPart] = args.queryKey;
+   const { id } = idPart;
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .then((json) => {console.log(json)
+      return json.cast})
+    .catch((error) => {
+      throw error;
+    });
+}
+
 export const getUpcomingMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`

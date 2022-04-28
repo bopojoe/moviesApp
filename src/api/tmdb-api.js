@@ -13,7 +13,6 @@ export const getMovies = () => {
     });
 };
 
-//https://api.themoviedb.org/3/movie/414906/credits?api_key=c408e5a5fe276a6c75cbe4020fd6676d
 
 export const getMovieCredits = (args) => {
   console.log(args.queryKey);
@@ -137,6 +136,17 @@ export const getMovieImages = ({ queryKey }) => {
       throw error;
     });
 };
+
+export const multiSearch = ({query}) => {
+  return fetch(
+    `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_KEY}&query=${query}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      // console.log(json.results);
+      return json.results;
+    });
+}
 
 export const getShowImages = ({ queryKey }) => {
   const [, idPart] = queryKey;

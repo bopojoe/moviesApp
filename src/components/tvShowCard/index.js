@@ -56,7 +56,7 @@ export default function TvShowCard({ show, action }) {
         }
       />
       <CardMedia
-        OnClick={()=>{
+        onClick={()=>{
           console.log("test");
         }}
         className={classes.media}

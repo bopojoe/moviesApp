@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateTvShowListPage";
-import { getTopTv } from "../api/tmdb-api";
+import { multiSearch } from "../api/tmdb-api";
 import { useQuery } from "react-query";
+import Grid from "@material-ui/core/Grid";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
-import {Typography} from "@material-ui/core"
+import { Typography, TextField, Box, Button } from "@material-ui/core";
 import MovieFilterUI, {
   titleFilter,
   genreFilter,
 } from "../components/movieFilterUI";
 import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
+import TvShowCard from "../components/tvShowCard";
+import ActorCard from "../components/actorCard";
+import MovieCard from "../components/movieCard";
 
 const titleFiltering = {
   name: "title",
@@ -22,15 +26,73 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
-const SomePage = (props) => {
+const SearchPage = (props) => {
   const [shows, setShows] = useState([]);
   const [mustWatch, setMustWatch] = useState([]);
+  const [results, setResults] = useState([]);
 
-  const { data, error, isLoading, isError } = useQuery(
-    "loadtoptv",
-    getTopTv
+  let result = "test";
+
+  const movieOrTV = (result) => {
+    console.log(result.media_type);
+    if (result.media_type == "movie") {
+      return (
+        <Grid key={result.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <MovieCard
+            key={result.id}
+            movie={result}
+            action={(movie) => {
+              console.log("test");
+            }}
+          />
+        </Grid>
+      );
+    } else if (result.media_type == "tv") {
+      return (
+        <Grid key={result.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <TvShowCard show={result} />
+        </Grid>
+      );
+    } else if (result.media_type == "person") {
+      return (
+        <Grid key={result.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <ActorCard key={result.id} actor={result} />;
+        </Grid>
+      );
+    }
+  };
+
+  return (
+    <>
+      <Box sx={{ mt: 20, pl: "45%" }}>
+        <TextField
+          sx={{}}
+          id="searchField"
+          variant="outlined"
+          placeholder="Search"
+        />
+      </Box>
+
+      <Box sx={{ pt: "10px", pl: "45%" }}>
+        <Button
+          onClick={() => {
+            const sField = document.getElementById("searchField");
+            let query = sField.value;
+            multiSearch({ query }).then((res) => {
+              setResults(res);
+            });
+          }}
+        >
+          search
+        </Button>
+      </Box>
+      <Grid item container spacing={5}>
+        {results.map((result) => {
+          return movieOrTV(result);
+        })}
+      </Grid>
+    </>
   );
-  return <Typography>{data}</Typography>;
-  }
+};
 
-  export default SomePage;
+export default SearchPage;

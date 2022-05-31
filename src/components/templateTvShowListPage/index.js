@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TopTvListPageTemplate({ tvshows, title }) {
-    console.log("wheres this", tvshows);
   const classes = useStyles();
   return (
     <div className={classes.root}>

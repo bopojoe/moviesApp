@@ -14,6 +14,7 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import TvShowContext from "../../contexts/tvShowContext";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
 
 export default function TvShowCard({ show, action }) {
   const classes = useStyles();
-  console.log(show);
+  const history = useHistory();
   // const { myTVfavourites, addToFavourites } = useContext(TvShowContext);
 
   //   if (myTVPlaylists.find((id) => id === show.id)) {
@@ -56,7 +57,7 @@ export default function TvShowCard({ show, action }) {
         }
       />
       <CardMedia
-        OnClick={()=>{
+        onClick={()=>{
           console.log("test");
         }}
         className={classes.media}
@@ -79,7 +80,7 @@ export default function TvShowCard({ show, action }) {
               <StarRateIcon fontSize="small" />
               {"  "} {show.vote_average}{" "}
             </Typography>
-            <Button variant="contained" href={`/tv/${show.id}`}>
+            <Button variant="contained" onClick={()=>{history.push(`/tv/${show.id}`)}}>
                 show details
             </Button>
           </Grid>

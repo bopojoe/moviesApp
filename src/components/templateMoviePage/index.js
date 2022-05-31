@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
-import { getMovieImages } from "../../api/tmdb-api";
+import { getMovieImages } from "../../api/lab-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
 
@@ -37,6 +37,7 @@ const TemplateMoviePage = ({ movie, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+  console.log("data is ",data)
   const images = data.posters;
 
   return (

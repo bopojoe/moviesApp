@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,6 +13,7 @@ import Menu from "@material-ui/core/Menu";
 import { useHistory } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { AuthContext } from "../auth/authContext";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -23,23 +25,38 @@ const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 }));
 
-const SiteHeader = () => {
+const SiteHeader = (props) => {
+  const context = useContext(AuthContext);
   const classes = useStyles();
   const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
   const open = Boolean(anchorEl);
-  const menuOptions = [
-    { label: "Home", path: "/" },
-    { label: "Upcoming Movies", path: "/movies/upcoming" },
-    { label: "Favorites", path: "/movies/favourites" },
-    { label: "Top TV Shows", path: "/tv/top" },
-    { label: "Search", path: "/" },
-  ];
+  const menuOptions = (!context.isAuthenticated)
+    ? [
+        { label: "Home", path: "/" },
+        { label: "Upcoming Movies", path: "/movies/upcoming" },
+        { label: "Favorites", path: "/movies/favourites" },
+        { label: "Top TV Shows", path: "/tv/top" },
+        { label: "Search", path: "/search" },
+      ]
+    : [
+        { label: "Home", path: "/" },
+        { label: "Upcoming Movies", path: "/movies/upcoming" },
+        { label: "Favorites", path: "/movies/favourites" },
+        { label: "Top TV Shows", path: "/tv/top" },
+        { label: "Search", path: "/search" },
+        { label: "logout", path: "/login" },
+      ];
 
   const handleMenuSelect = (pageURL) => {
+    if (pageURL === "/login") {
+      window.localStorage.removeItem("token");
+      context.signout();
+      //<Redirect to="/login"/>
+      history.push(pageURL);
+    }
     history.push(pageURL);
   };
 

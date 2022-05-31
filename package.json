@@ -49,6 +49,7 @@
     "@storybook/node-logger": "^6.4.22",
     "@storybook/preset-create-react-app": "^4.1.0",
     "@storybook/react": "^6.4.22",
+    "dotenv-webpack": "^7.1.0",
     "webpack": "5"
   }
 }

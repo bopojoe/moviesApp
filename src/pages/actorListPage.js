@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import PageTemplate from "../components/actorListTemplatePage";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import { getMovieCredits, getMovies } from "../api/tmdb-api";
+import { getMovieCredits, getMovies } from "../api/lab-api";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, {
   titleFilter,
@@ -22,17 +22,20 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
-const ActorListPage = () => {
-    const { id } = useParams();
-    console.log(id);
-  const { data, error, isLoading, isError } = useQuery(
+const ActorListPage = (props) => {
+  const { id } = useParams();
+   console.log(id);
+  // const id = 526896;
+  const {data, isLoading, isError, error} = useQuery(
     ["cast", { id: id }],
     getMovieCredits
   );
-  const { filterValues, setFilterValues, filterFunction } = useFiltering(
-    [],
-    [titleFiltering, genreFiltering]
-  );
+  // const { data } = getMovieCredits(id);
+  console.log(data);
+  // const { filterValues, setFilterValues, filterFunction } = useFiltering(
+  //   [],
+  //   [titleFiltering, genreFiltering]
+  // );
 
   if (isLoading) {
     return <Spinner />;
@@ -42,15 +45,10 @@ const ActorListPage = () => {
     return <h1>{error.message}</h1>;
   }
 
-
-
   return (
     <>
-      <PageTemplate
-        title="Actors for the movie"
-        data={data}
-      />
-
+    {/* {data} */}
+      <PageTemplate title="Actors for the movie" data={data} />
     </>
   );
 };

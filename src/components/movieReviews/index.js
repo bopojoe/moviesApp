@@ -8,7 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
-import { getMovieReviews } from "../../api/tmdb-api";
+import { getMovieReviews } from "../../api/lab-api";
 import { excerpt } from "../../util";
 
 const useStyles = makeStyles({
@@ -23,7 +23,7 @@ export default function MovieReviews({ movie }) {
 
   useEffect(() => {
     getMovieReviews(movie.id).then((reviews) => {
-      setReviews(reviews);
+      setReviews(reviews.results);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

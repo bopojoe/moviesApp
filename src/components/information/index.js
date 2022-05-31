@@ -11,6 +11,7 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
+import { useHistory } from "react-router-dom";
 
 import { Button } from "@material-ui/core";
 
@@ -47,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
 
 const InformationComponent = ({ movieId }) => {
   const classes = useStyles();
-  console.log("in info", movieId);
+  const history = useHistory()
+  console.log("in information", movieId);
   const route = `/cast/${movieId}`;
 
   return (
@@ -61,7 +63,7 @@ const InformationComponent = ({ movieId }) => {
           />
         </li>
         <li>
-          <Button label="Cast" className={classes.chip} href={route}>
+          <Button label="Cast" className={classes.chip} onClick={()=>{history.push(route)}}>
             {" "}
             Cast{" "}
           </Button>

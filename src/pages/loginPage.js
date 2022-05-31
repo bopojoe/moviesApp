@@ -1,8 +1,9 @@
 import React from "react";
-import Header from "../headerMovieList";
+import Login from "../components/login";
+import Header from "../components/blankHeader";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import ActorList from "../actorList";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,20 +13,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ActorListPageTemplate({ data, title, action }) {
-  console.log("ALP", data);
-  const classes = useStyles();
+const LoginPage = (props) => {
+const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container>
         <Grid item xs={12}>
-          <Header title={title} />
-        </Grid>
-        <Grid item container spacing={5}>
-          <ActorList cast={data.cast} />
+          <Header title={props.title} />
         </Grid>
       </Grid>
+      <Login {...props} />
     </div>
   );
-}
-export default ActorListPageTemplate;
+};
+
+export default LoginPage;

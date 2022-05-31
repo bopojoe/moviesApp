@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../headerMovieList";
+import Register from "../components/registration";
+
+import Header from "../components/blankHeader";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import ActorList from "../actorList";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#bfbfbf",
@@ -11,21 +11,18 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(7),
   },
 }));
-
-function ActorListPageTemplate({ data, title, action }) {
-  console.log("ALP", data);
-  const classes = useStyles();
+const RegisterPage = (props) => {
+    const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container>
         <Grid item xs={12}>
-          <Header title={title} />
-        </Grid>
-        <Grid item container spacing={5}>
-          <ActorList cast={data.cast} />
+          <Header title={props.title} />
         </Grid>
       </Grid>
+      <Register {...props} />
     </div>
   );
-}
-export default ActorListPageTemplate;
+};
+
+export default RegisterPage;

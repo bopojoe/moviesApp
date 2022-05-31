@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateTvShowListPage";
-import { multiSearch } from "../api/tmdb-api";
+import { multiSearch } from "../api/lab-api";
 import { useQuery } from "react-query";
 import Grid from "@material-ui/core/Grid";
 import Spinner from "../components/spinner";
@@ -34,7 +34,6 @@ const SearchPage = (props) => {
   let result = "test";
 
   const movieOrTV = (result) => {
-    console.log(result.media_type);
     if (result.media_type == "movie") {
       return (
         <Grid key={result.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
@@ -42,7 +41,6 @@ const SearchPage = (props) => {
             key={result.id}
             movie={result}
             action={(movie) => {
-              console.log("test");
             }}
           />
         </Grid>
@@ -56,7 +54,7 @@ const SearchPage = (props) => {
     } else if (result.media_type == "person") {
       return (
         <Grid key={result.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
-          <ActorCard key={result.id} actor={result} />;
+          <ActorCard key={result.id} actor={result} />
         </Grid>
       );
     }

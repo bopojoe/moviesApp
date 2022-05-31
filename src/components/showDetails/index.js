@@ -114,11 +114,6 @@ const hasAdultContent=(show)=>{
           {hasAdultContent(show)}
           <li>
             <Chip
-              label={`Seasons: ${show.seasons}`}
-              className={classes.chipLabel}
-              color="primary"
-            />
-            <Chip
               label={`Number of Seasons: ${show.number_of_seasons}`}
               className={classes.chipLabel}
               color="primary"

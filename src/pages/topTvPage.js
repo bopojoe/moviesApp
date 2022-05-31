@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateTvShowListPage";
-import { getTopTv } from "../api/tmdb-api";
+import { getTopTv } from "../api/lab-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
@@ -10,7 +10,6 @@ const TopTvPage = (props) => {
   const [mustWatch, setMustWatch] = useState([]);
 
   const { data, error, isLoading, isError } = useQuery("loadtoptv", getTopTv);
-  console.log("returned",data);
   
 
   if (isLoading) {
